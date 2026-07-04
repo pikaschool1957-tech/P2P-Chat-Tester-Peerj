@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect width="100%" height="100%" fill="#000" />
+  <text x="20" y="40" fill="#00ff00" font-family="monospace" font-size="18">Me: Hello</text>
+  <text id="peer" x="20" y="80" fill="#00ff00" font-family="monospace" font-size="18">Peer: ...</text>
+
+  <rect x="20" y="100" width="120" height="30" fill="#00ff00">
+    <animate attributeName="fill" values="#00ff00;#000000;#00ff00" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  <text x="30" y="120" fill="#000" font-family="monospace" font-size="14">Sending</text>
+
+  <animate xlink:href="#peer" attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+</svg>
