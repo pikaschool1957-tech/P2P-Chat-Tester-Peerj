@@ -1,6 +1,6 @@
 # P2P-Chat-Tester-Peerjs
 
-A minimal peer-to-peer (P2P) chat tester built with PeerJS and plain HTML/JavaScript. This repository contains a simple front-end (HTML/CSS/JS) to test P2P connections and messaging between browser peers.
+A minimal peer-to-peer (P2P) chat tester built with PeerJS and plain HTML/JavaScript. This repository contains a simple front-end (HTML/CSS/JS) to test P2P connections and messaging between browser instances.
 
 ## Features
 
@@ -30,22 +30,9 @@ A minimal peer-to-peer (P2P) chat tester built with PeerJS and plain HTML/JavaSc
 - Each page displays "Your ID:" — copy one ID into the other's "Enter remote peer ID" box and press Connect  
 - Type messages and press Send (or Enter)
 
-## Demo & Screenshots
+## Demo
 
-Below are placeholders that already exist in the repository. They will render when the files are present:
-
-![Screenshot placeholder](assets/screenshot.svg)
-![Demo placeholder](assets/demo.svg)
-
-How to add your own images:
-
-- Create or replace files under `assets/`:
-  - `assets/screenshot.png` or `.svg` — a static screenshot of the UI (recommended size: 800×450 or 1200×675)
-  - `assets/demo.gif` or `.svg` — a short animated GIF or animated SVG demonstrating a connection and messages
-
-Example (Linux/macOS):
-- Record a GIF or make a PNG and move it into `assets/`:
-  - `git add assets/screenshot.png assets/demo.gif && git commit -m "Add demo assets" && git push`
+This repository previously included demo screenshots and animated assets in `assets/`. Those placeholder images have been removed from the README to keep the documentation concise. If you'd like to add screenshots or a short demo GIF, place them under the `assets/` directory and update the README accordingly.
 
 ## GitHub Pages (optional)
 
@@ -61,7 +48,7 @@ Notes:
 - `index.html` — Main demo page with chat UI and PeerJS integration  
 - `peerjs.min.js` — PeerJS client library included for convenience  
 - `README.md` — This file  
-- `assets/` — screenshots and demo SVG/GIFs
+- `assets/` — optional images or demo files
 
 ## Contributing
 
