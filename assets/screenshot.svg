@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <rect width="100%" height="100%" fill="#000" />
-  <text x="50%" y="45%" fill="#00ff00" font-family="monospace" font-size="36" text-anchor="middle">
-    P2P Chat Tester — Screenshot Placeholder
-  </text>
-  <rect x="50" y="500" width="1100" height="120" fill="#0b0b0b" stroke="#00ff00" />
-  <text x="60" y="540" fill="#00ff00" font-family="monospace" font-size="20">Your ID: xxxx-xxxx</text>
-  <text x="60" y="570" fill="#00ff00" font-family="monospace" font-size="20">Connected to: yyyy-yyyy</text>
-</svg>
