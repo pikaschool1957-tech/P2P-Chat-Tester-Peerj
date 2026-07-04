@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P2P Chat Tester Peerjs</title>
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <style>
+        body { font-family: monospace; background: #121212; color: #00ff00; padding: 20px; }
+        #chat-box { width: 400px; height: 250px; border: 1px solid #00ff00; overflow-y: auto; padding: 10px; margin: 10px 0; background: #000; }
+        input, button { background: #000; color: #00ff00; border: 1px solid #00ff00; padding: 5px; font-family: monospace; }
+        button { cursor: pointer; }
+        button:hover { background: #00ff00; color: #000; }
+        .error { color: #ff0000; }
+    </style>
+</head>
+<body>
+
+    <h2>P2P Chat Node</h2>
+    <div><strong>Your ID:</strong> <span id="my-id">Connecting...</span></div>
+    <div id="error-msg" class="error"></div>
+    
+    <br>
+    <input type="text" id="peer-id-input" placeholder="Enter remote peer ID">
+    <button id="connect-btn">Connect</button>
+    
+    <div id="chat-box"></div>
+
+    <input type="text" id="message-input" placeholder="Type a message..." style="width: 310px;">
+    <button id="send-btn">Send</button>
+
+    <script>
+        // FIX 1: Use empty constructor to connect to free PeerJS cloud servers automatically
+        const peer = new Peer(); 
+        
+        let activeConnection = null;
+
+        peer.on('open', (id) => {
+            document.getElementById('my-id').innerText = id;
+            log("System: Connected to signaling server.");
+        });
+
+        peer.on('error', (err) => {
+            document.getElementById('error-msg').innerText = "Error: " + err.type;
+            console.error(err);
+        });
+
+        // When someone else initiates a connection to you
+        peer.on('connection', (conn) => {
+            setupConnection(conn);
+            log(`System: Incoming connection from ${conn.peer}`);
+        });
+
+        // When you want to initiate a connection to someone else
+        document.getElementById('connect-btn').onclick = () => {
+            const remoteId = document.getElementById('peer-id-input').value.trim();
+            if (!remoteId) return alert("Please enter an ID");
+            
+            log(`System: Trying to connect to ${remoteId}...`);
+            const conn = peer.connect(remoteId);
+            
+            setupConnection(conn);
+        };
+
+        // Standard message sending logic
+        document.getElementById('send-btn').onclick = sendMessage;
+        document.getElementById('message-input').onkeydown = (e) => { if(e.key === 'Enter') sendMessage(); };
+
+        function sendMessage() {
+            const msgInput = document.getElementById('message-input');
+            const message = msgInput.value.trim();
+            
+            if (!message) return;
+            if (!activeConnection) return alert("No active connection. Connect to a peer first.");
+
+            activeConnection.send(message);
+            log("Me: " + message);
+            msgInput.value = "";
+        }
+
+        // FIX 2: Handle data and state safely within the 'open' cycle 
+        // to prevent premature bindings or missing handshakes
+        function setupConnection(conn) {
+            activeConnection = conn;
+
+            conn.on('open', () => {
+                log(`System: Connection established with ${conn.peer}!`);
+            });
+
+            conn.on('data', (data) => {
+                log(`${conn.peer}: ${data}`);
+            });
+
+            conn.on('close', () => {
+                log("System: Connection closed.");
+                activeConnection = null;
+            });
+        }
+
+        function log(msg) {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `<div>${msg}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
