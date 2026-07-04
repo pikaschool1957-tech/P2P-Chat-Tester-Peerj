@@ -30,9 +30,7 @@ A minimal peer-to-peer (P2P) chat tester built with PeerJS and plain HTML/JavaSc
 - Each page displays "Your ID:" — copy one ID into the other's "Enter remote peer ID" box and press Connect  
 - Type messages and press Send (or Enter)
 
-## Demo
 
-This repository previously included demo screenshots and animated assets in `assets/`. Those placeholder images have been removed from the README to keep the documentation concise. If you'd like to add screenshots or a short demo GIF, place them under the `assets/` directory and update the README accordingly.
 
 ## GitHub Pages (optional)
 
