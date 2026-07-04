@@ -46,7 +46,7 @@ Notes:
 - `index.html` — Main demo page with chat UI and PeerJS integration  
 - `peerjs.min.js` — PeerJS client library included for convenience  
 - `README.md` — This file  
-- `assets/` — optional images or demo files
+
 
 ## Contributing
 
